@@ -191,10 +191,12 @@ All connected by underscores.
 **Hyphenated (double) names — pers_id uses only the first part:**
 The `pers_id` must **not** contain hyphenated surnames. For a double surname
 (Doppelname), only the **first** part is used in the `pers_id`, while the full
-hyphenated form is retained in the `last_name` variable. The same holds for
-double first names: only the first part enters the `pers_id`. For example, the
-person whose `last_name` is `Mackensen-Geis` and `first_name` is `Isabel` has
-`pers_id` `DE_Mackensen_Isabel_1986`; `Goering-Eckardt` / `Katrin-Dagmar` gives
+hyphenated form is retained in the `last_name` variable, and the dropped surname
+part(s) are additionally recorded in `other_name` (see below) so the alternative
+single-surname form is available for matching. The same holds for double first
+names: only the first part enters the `pers_id`. For example, the person whose
+`last_name` is `Mackensen-Geis` and `first_name` is `Isabel` has `pers_id`
+`DE_Mackensen_Isabel_1986`; `Goering-Eckardt` / `Katrin-Dagmar` gives
 `DE_Goering_Katrin_1966`. (This keeps `pers_id`s stable when a second surname is
 added by marriage, and reserves the hyphen for the disambiguation index `-x`.)
 
@@ -226,7 +228,7 @@ Alternative IDs and how they correspond to the main ID can be found in the appen
 **Parliamentarian's first name**: The first name(s) of the parliamentarian, following the cleanup rules specified above.
 
 #### other_name
-**Parliamentarian's alternative names or alias**: Contains an (array of) first or last name(s) or alias(es) in case there is or was another first or last name used than mentioned in `first_name` or `last_name`. This might be due to name change, a maiden name, or a commonly used shortage or alias.
+**Parliamentarian's alternative names or alias**: Contains an (array of) first or last name(s) or alias(es) in case there is or was another first or last name used than mentioned in `first_name` or `last_name`. This might be due to name change, a maiden name, or a commonly used shortage or alias. **For a hyphenated / double surname (Doppelname), record here the alternative single-surname form(s)** — in particular the first part used in the `pers_id` and any maiden or pre-marriage surname — so a record can still be matched when another source (or the central database) holds the person under the shorter name. Example: `last_name` `Michaud-Gigon`, `pers_id` `CH_Michaud_Sophie_1975`, `other_name` `Michaud`.
 
 #### gender
 **Parliamentarian's gender**: Gives the gender of the parliamentarian in string format:
