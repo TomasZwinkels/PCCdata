@@ -16,6 +16,7 @@
    - [Sample](#sample)
 3. [How to Read this Codebook](#how-to-read-this-codebook)
    - [Labels, Abbreviations, Etc.](#labels-abbreviations-etc)
+   - [Value Conventions](#value-conventions)
    - [Collection Effort Per Variable](#collection-effort-per-variable)
 4. [POLI - Politician Level Data Frame](#poli---politician-level-data-frame)
 5. [PARE - Parliamentary Episode Data Frame](#pare---parliamentary-episode-data-frame)
@@ -107,6 +108,21 @@ Both parliamentarians in the lower-house (i.e. Bundestag, Nationalrat, Tweede Ka
 - `DNC` means: Do Not Collect, these are specifications that are kept in codebook for reference purposes whose values we do not intend to collect (to this level of detail).
 - If a variable name contains an (by underscores) indexed element on the lists which is not used, `NA` will be used as a filler.
 
+### Value Conventions
+
+**All exported string fields contain plain printable 7-bit ASCII only** — the characters from space to `~`. This holds for every text field in every data frame: raw source excerpts (`res_entry_raw`, `birth_place_raw`, `hometown_raw`, ...), party, faction, committee, constituency and organisation names, and all other free-text fields — not only person names. Non-ASCII characters in the source material are transliterated with the same substitution rules used for the cleaning of names (see `last_name & first_name` in POLI):
+
+- An umlaut (ö, ä, ü) is written as "oe", "ae", "ue"
+- A "ß" is written as "ss"
+- All accents or similar (é, ã, ê, š, ğ, ç, ÿ) are left out, instead just the basic letter is written (e, a, e, s, g, c, y)
+
+This rule is enforced at the database boundary by the `RegExCheck` column of the requirements worksheet (`pcc_codebook/requirements_worksheet_export.csv`), where free-text fields validate against `^[ -~]+$`.
+
+There are two deliberate exceptions, where transliteration would destroy information:
+
+- **Source identifier columns** (`id_[country]_*`): stored exactly as issued by the source system — altering them would break the key back to the source. For example, `id_ie_parliament` legitimately contains Irish fadas ("Seán-Ardagh.D.1997-06-26").
+- **URL and external-title columns** (e.g. links to Wikipedia articles): transliteration breaks the link ("Ståle" → "Staale" no longer resolves).
+
 ### Collection Effort Per Variable
 
 Not all variables are collected with the same effort. Our effort to collect different variables varies from the highest level ('Collect and follow-up until Complete') to the lowest level ('Collect When Easy'). These are the matching abbreviations:
@@ -172,7 +188,7 @@ Politician level variables are all static variables on the level of individual p
 | `educ_age` | Integer | 0-100 | **age at completion of education**: ratio variable indicating how old a politician was when finishing their last degree | CWA |
 | `educ_raw` | String | School 'The Bear' 1932 | **education**: raw text string field with all available educational information | COMP |
 | `title_raw` | String | Prof. Dr. | **academic title**: academic title(s), if any. Set to "none" if known that MP has no academic title | COMP |
-| `military_raw` | String | Major, Appointé | **military rank**: raw string information about the military career | CWA |
+| `military_raw` | String | Major, Appointe | **military rank**: raw string information about the military career | CWA |
 | `twitter_screen_name` | String | Petra_Sitte_MdB, KathyR111 | **twitter screen name**: raw string information about the twitter screen name (can be changed) | CWA |
 | `twitter_id` | Integer | 17535941, 2179010672 | **twitter id**: refers to the specific account and cannot be changed | CWA |
 | `facebook_username` | String | john.doe, janedoe123, 100009711991629 | **facebook username**: unique identifier for users on Facebook (sometimes numerical, sometimes changed by user) | CWA |
@@ -219,6 +235,8 @@ Alternative IDs and how they correspond to the main ID can be found in the appen
 - If names contain prepositions like 'Von' or 'Van der' then the space between these prepositions (name-particle) and the actual lastname are removed and capitals are replaced. So, 'Von Liebig' is spelled as 'vonLiebig' and 'Van Der Maden' is spelled as 'vanderMaden'
 - If the names contain multiple parts (e.g. first_name Jean Luc) then the spaces are replaced with hyphens (e.g. Jean-Luc)
 - Additional non-name particles such as junior are included after underscores (Carl_jun)
+
+The first three rules (umlauts, ß, accents) are not specific to names: they apply to every exported text field in every data frame — see [Value Conventions](#value-conventions).
 
 #### last_name
 **Parliamentarian's last name**: The last name(s) of the parliamentarian, following the cleanup rules specified above.
