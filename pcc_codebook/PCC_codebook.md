@@ -389,6 +389,7 @@ The exact legal basis for the mandate start date varies by country and depends o
 - In some systems, the mandate begins on a constitutionally fixed date (e.g., January 3 in the US post-20th Amendment, or March 4 pre-20th Amendment).
 - In others, the mandate begins on the day after the election, or on the day election results are officially certified.
 - The country-specific interpretation must be documented in the data extraction pipeline for that country.
+- **Canada (House of Commons):** PCC retains the source-recorded ParlInfo service starts as an explicit operational convention; see the Canada note under `leg_period_start`.
 
 **Date format**: Date entries consist of the two-digit day, the month (first three letters, small, of the English name of the month) and the four-digit year (e.g., `04jan1966`). In case of missing information on days or month, shortened versions are used (e.g., `jan1966` or `1966`).
 
@@ -897,7 +898,7 @@ A "parliament" thus always entails a combination of a legislative term (e.g. `le
 | `coalition_parties` | String | NL\_VVD\_NT; NL\_PvdA\_NT | Array of party\_id's indicating which part(ie/y) was/were a part of the governing coalition during this parliamentary term | CWA |
 | `previous_parliament` | ID | NL\_NT-TK\_1946 | Parliament\_id of the previous parliament | CWA |
 | `parliament_size` | Integer | 150, 519, `519;663` | **parliament size**: the number of members seated in the parliament. If the size fluctuates within a term, the successive values are separated by `;` in chronological order | CWA |
-| `comment` | String | "size step from 410 to 421 on 01feb1952, when the West Berlin non-voting delegation grew…" | **free-text note**: optional human-readable annotation about the parliament row; typically empty. Used to document the reason and changeover date(s) behind a `;`-separated `parliament_size` | CWA |
+| `comment` | String | "size step from 410 to 421 on 01feb1952, when the West Berlin non-voting delegation grew…" | **free-text note**: optional human-readable annotation about the parliament row; typically empty. Used to document date conventions and first-session dates, or the reason and changeover date(s) behind a `;`-separated `parliament_size` | CWA |
 
 ### Variable Descriptions
 
@@ -913,6 +914,8 @@ All appended by underscore.
 
 #### leg_period_start
 **Legislative period start date**: The first calendar day on which members of this parliament hold a legal mandate to serve. This follows the same mandate-based principle as `res_entry_start` in RESE: the date is determined by constitutional or statutory law, not by when parliament first convened or when members were sworn in. The exact legal basis varies by country and must be documented in the data extraction pipeline (see RESE section for details). Date format: two-digit day, month (first three letters), and four-digit year (e.g., `03jan2025`). Shortened versions are used when day or month are unknown.
+
+**Canada (House of Commons) - operational convention adopted 08sep2026:** `leg_period_start` uses the corresponding main intake date already recorded in Canadian RESE, while existing `res_entry_start` values are retained. The first-session date is recorded in `PARL.comment`, with an explanation that the earlier legislative start aligns PARL with the source-recorded membership cohort. This is a documented source-based convention, not independent verification of each member's precise legal declaration, writ-return, certification or oath date. For the staggered elections of 1867 and 1872, the accepted main intake dates are `20sep1867` and `12oct1872`, corresponding to their final polling dates. Individual delayed entries are preserved. Existing `parliament_id` values remain stable even where their historical year labels differ from the corrected start year. This decision concerns start dates and comments only; it does not prescribe changes to legislative end dates.
 
 #### leg_period_end
 **Legislative period end date**: The last calendar day on which members of this parliament hold a legal mandate to serve. Same mandate-based principle and format as `leg_period_start`. The midnight rule applies: `leg_period_end` must be the day before `leg_period_start` of the next parliament, so that consecutive parliaments never share the same date (see the midnight rule under `res_entry_end` in the RESE section).
