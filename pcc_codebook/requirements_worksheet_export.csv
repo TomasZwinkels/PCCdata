@@ -9,7 +9,7 @@ RESE;res_entry_end;TRUE;;^(([0-9]{2}){0,1}(jan|feb|mar|apr|may|jun|jul|aug|sep|o
 RESE;res_entry_at;TRUE;;^(([0-9]{2}){0,1}(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec){0,1}((1|2)(0|7|8|9)([0-9]{2})))(\[\[(rcen|lcen)\]\]){0,1}|(NA|NC)$;TRUE;TRUE;;text;;;;;
 RESE;res_entry_type;TRUE;;^(pol|prof|educ|iden|oth|elec)$;TRUE;TRUE;;text;;;;;
 RESE;res_entry_source;TRUE;;^[ -~]+$;TRUE;TRUE;;text;;;;;
-RESE;parliament_id;TRUE;;"^([A-Z]{2}_(([A-Z]{2})|([A-Z]{2})-([A-Z]{2}))_[1-2][8-9|0-1][0-9][0-9](;[A-Z]{2}_(([A-Z]{2})|([A-Z]{2})-([A-Z]{2}))_[1-2][8-9|0-1][0-9][0-9]){0,10})|(NA)$";TRUE;TRUE;;text;;;;;
+RESE;parliament_id;TRUE;;"^([A-Z]{2}_([A-Z]{2}|[A-Z]{2}-[A-Z]{2})_[12][0789][0-9]{2}(;[A-Z]{2}_([A-Z]{2}|[A-Z]{2}-[A-Z]{2})_[12][0789][0-9]{2}){0,10}|NA)$";TRUE;TRUE;;text;;;;;
 RESE;faction_id;TRUE;;"^[A-Z]{2}_(([A-Z]{2})|([A-Z]{2})-([A-Z]{2}))_[1-2][8-9|0-1][0-9][0-9]__(CH|NL|DE|IE|UK)_([A-Za-z0-9\|+\\]{2,8})_((IN|EU|NT|SR|(RE-[A-Z]{2})|SD|DI|SM|MU)|([A-Z]{2}))|(CH|NL|DE|IE|UK)_([A-Za-z0-9\|+\\]{2,8})_((IN|EU|NT|SR|(RE-[A-Z]{2})|SD|DI|SM|MU)|([A-Z]{2}));(CH|NL|DE|IE|UK)_([A-Za-z0-9\|+\\]{2,8})_((IN|EU|NT|SR|(RE-[A-Z]{2})|SD|DI|SM|MU)|([A-Z]{2}))$";TRUE;TRUE;;text;FACT;;;;
 RESE;comm_id;TRUE;;^([A-Z]{2}_(([A-Z]{2})|([A-Z]{2})-([A-Z]{2}))_[1-2][8-9|0-1][0-9][0-9]__){1,2}(CO|DL|AG|FA)\|([a-zA-Z /\+-]{0,100})(--((SC|SD|SA)\|[a-zA-Z /\+]{0,20})){0,1}|[0-9]{2}$;TRUE;TRUE;;text;COMM;;;;
 RESE;political_function;TRUE;;"^(((IN|EU|NT|SR|RE|SD|DI|SM|MU|BM|NA|NC)_((LE|LE-LH|LE-UH|LE-LH-FA|LE-UH-FA)|EX|JU|AD|SI|(PA|PA-MA|PA-YO)|IG|OT|NA|NC)_(T1|T2|T3|NA|NC|T1-NA|T1-NC|T1-FA|T2-NA|T2-NC|T1-CO|T2-CO|T2-DL|T2-AG|T2-FA|T3-NA|T3-NA|T3-FA|NA-NA|NC-NC)((-[0-9]{2}){0,1})_([0-9]{4}|NA|NC)_([0-9]{2}|NA|NC)|EDUC_[0-9]{4})|(NA|NC|OT_[A-Z]{2}|EDUC))(;(((IN|EU|NT|SR|RE|SD|DI|SM|MU|NA|NC)_((LE|LE-LH|LE-UH)|EX|JU|AD|SI|(PA|PA-MA|PA-YO)|IG|OT|NA|NC)_(T1|T2|T3|NA|NC|T1-NA|T1-NC|T1-FA|T2-NA|T2-NC|T2-CO|T2-DL|T2-AG|T2-FA|T3-NA|T3-NC|T3-FA|NA-NA|NC-NC)((-[0-9]{2}){0,1})_([0-9]{4}|NA|NC)_([0-9]{2}|NA|NC))|(NA|NC|OT_[A-Z]{2}))){0,10}$";TRUE;TRUE;;text;;;;;
@@ -24,7 +24,7 @@ RESE;educ_field_isced2013;TRUE;;^(F01|F02|F03|F04|F05|F06|F07|F08|F09|F10)$;TRUE
 RESE;org_id;TRUE;;^((CH|DE|NL|IE|UK)_.{12}|NA)$;TRUE;TRUE;;text;ORGS;;;;
 RESE;isco08;TRUE;;^[0-9]{1,4}|OT.{3,6}$;TRUE;TRUE;;text;;;;;
 RESE;tomas_code;TRUE;;.;TRUE;TRUE;;text;;;;;
-POLI;pers_id;FALSE;;^(CH|DE|NL|IE|UK|NO|CA|US)_([A-Z]|[a-z]){2,60}_([A-Z]|[a-z]){1,60}_(([1-2][0,7-9][0-9][0-9]([a-z]{3}){0,1})(-[0-9]){0,1}|(9999)|NA)$;TRUE;TRUE;0.8;text;;;prim;"PARE;RESE;MEME;MINE;ELEN";0.45
+POLI;pers_id;FALSE;;^(CH|DE|NL|IE|UK|NO|CA|US)_([A-Z]|[a-z]){2,60}_([A-Z]|[a-z]){1,60}_(([1-2][0,7-9][0-9][0-9]([a-z]{3}){0,1})(-[0-9]){0,1}|(9999)|NA)$;TRUE;TRUE;0,8;text;;;prim;"PARE;RESE;MEME;MINE;ELEN";0.45
 POLI;id_nl_polca;TRUE;;^[0-9]{4}$;TRUE;TRUE;;text;;;;;
 POLI;id_nl_pdc_num;TRUE;;[0-9]{1,5}$;TRUE;TRUE;;text;;;;;
 POLI;id_nl_pdc_code;TRUE;;^[a-z][a-z0-9]{2}[a-z0-9]{8,10}$;TRUE;TRUE;;text;;;;;
