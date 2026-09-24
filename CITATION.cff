@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite the following paper."
+type: dataset
+title: "PCC — Parliamentary Careers in Comparison"
+url: "http://parliamentarycareersincomparison.org"
+repository-code: "https://github.com/TomasZwinkels/PCCdata"
+license: "CC-BY-NC-4.0"
+authors:
+  - family-names: "Turner-Zwinkels"
+    given-names: "Tomas"
+  - family-names: "Huwyler"
+    given-names: "Oliver"
+  - family-names: "Frech"
+    given-names: "Elena"
+  - family-names: "Manow"
+    given-names: "Philip"
+  - family-names: "Bailer"
+    given-names: "Stefanie"
+  - family-names: "Goet"
+    given-names: "Niels D."
+  - family-names: "Hug"
+    given-names: "Simon"
+preferred-citation:
+  type: article
+  title: "Parliaments day-by-day: A new Open Source database to answer the question of who was in what parliament, party, and party-group, and when"
+  authors:
+    - family-names: "Turner-Zwinkels"
+      given-names: "Tomas"
+    - family-names: "Huwyler"
+      given-names: "Oliver"
+    - family-names: "Frech"
+      given-names: "Elena"
+    - family-names: "Manow"
+      given-names: "Philip"
+    - family-names: "Bailer"
+      given-names: "Stefanie"
+    - family-names: "Goet"
+      given-names: "Niels D."
+    - family-names: "Hug"
+      given-names: "Simon"
+  journal: "Legislative Studies Quarterly"
+  volume: 47
+  issue: 3
+  start: 761
+  end: 784
+  year: 2022
+  doi: "10.1111/lsq.12359"
