@@ -1,6 +1,6 @@
 # PCC — Parliaments Day-by-Day
 
-**Who was in what parliament, party, and party-group, and when.**
+**Who was in what parliament, when.**
 
 PCC (*Parliamentary Careers in Comparison*) is an open dataset of the full political careers of (almost) every national and regional parliamentarian in several countries, reconstructed **day by day** rather than election by election. It tracks people across parliamentary mandates, party memberships, factions, committees, electoral candidacies, and every other resume entry that makes up a political career — from a first city-council seat to a term as prime minister.
 
@@ -12,9 +12,9 @@ PCC (*Parliamentary Careers in Comparison*) is an open dataset of the full polit
 
 | | |
 |---|---|
-| Countries | Switzerland, Germany, Netherlands, Norway, Canada, Ireland, United Kingdom (Scotland) |
+| Countries | Switzerland, Germany, Netherlands, Norway, Canada |
 | Parliaments covered | 980 legislative terms — both national assemblies and regional ones (Swiss cantonal parliaments, German Länder) |
-| Time span | 1867 – 2025 |
+| Time span | 1945 – 2025 (some observations go back as early as 1867) |
 | Politicians | 88,130 |
 | Resume entries | 250,525 career-spell records |
 
@@ -70,8 +70,6 @@ PCC combines official parliamentary records, national statistical/biographical r
 - **Netherlands** — [parlement.com](https://www.parlement.com), the website of the Dutch Parliamentary Documentation Centre (PDC), cross-checked against the Tweede Kamer's own open-data portal.
 - **Norway** — the Storting's official [Open Data API](https://data.stortinget.no/).
 - **Canada** — ParlInfo, the Library of Parliament's public parliamentarian database ([lop.parl.ca](https://lop.parl.ca)).
-- **Ireland** — official records of the Houses of the Oireachtas.
-- **United Kingdom** — official membership records of the Scottish Parliament.
 
 Additional country pipelines are under active development. Some fields are enriched from Wikidata (e.g. birth dates, external identifiers). See the codebook's *Data Sources* section and the `id_[country]_*` columns in `POLI.csv` for the exact source system behind each row.
 
@@ -100,4 +98,4 @@ If you use this data in published or public-facing work, please cite:
 }
 ```
 
-Publication page: https://research.tilburguniversity.edu/en/publications/parliaments-daybyday-a-new-open-source-database-to-answer-the-que/
+DOI: https://doi.org/10.1111/lsq.12359
